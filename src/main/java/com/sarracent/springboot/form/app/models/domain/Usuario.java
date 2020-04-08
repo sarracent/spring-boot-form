@@ -1,6 +1,9 @@
 package com.sarracent.springboot.form.app.models.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.*;
+import java.util.Date;
 
 public class Usuario {
 
@@ -28,6 +31,10 @@ public class Usuario {
     @Min(5)
     @Max(5000)
     private Integer cuenta;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaNacimiento;
 
     public Usuario() {
     }
@@ -92,5 +99,13 @@ public class Usuario {
 
     public void setCuenta(Integer cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }
