@@ -3,6 +3,7 @@ package com.sarracent.springboot.form.app.controllers;
 import com.sarracent.springboot.form.app.models.domain.Usuario;
 import com.sarracent.springboot.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @SessionAttributes("usuario")
@@ -25,6 +28,9 @@ public class FormController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.addValidators(validador);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
     @GetMapping("/form")
