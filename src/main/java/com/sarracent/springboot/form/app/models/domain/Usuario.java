@@ -1,7 +1,5 @@
 package com.sarracent.springboot.form.app.models.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.validation.constraints.*;
 import java.util.Date;
 
@@ -33,7 +31,7 @@ public class Usuario {
     private Integer cuenta;
 
     @NotNull
-    @Future
+    @Past
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
 

@@ -1,5 +1,6 @@
 package com.sarracent.springboot.form.app.controllers;
 
+import com.sarracent.springboot.form.app.editors.NombreMayusculaEditor;
 import com.sarracent.springboot.form.app.models.domain.Usuario;
 import com.sarracent.springboot.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class FormController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, false));
+
+        binder.registerCustomEditor(String.class,"nombre",new NombreMayusculaEditor());
     }
 
     @GetMapping("/form")
