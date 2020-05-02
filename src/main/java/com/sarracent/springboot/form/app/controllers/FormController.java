@@ -1,6 +1,7 @@
 package com.sarracent.springboot.form.app.controllers;
 
 import com.sarracent.springboot.form.app.editors.NombreMayusculaEditor;
+import com.sarracent.springboot.form.app.editors.PaisPropertyEditor;
 import com.sarracent.springboot.form.app.models.domain.Pais;
 import com.sarracent.springboot.form.app.models.domain.Usuario;
 import com.sarracent.springboot.form.app.services.PaisService;
@@ -27,6 +28,9 @@ public class FormController {
     @Autowired
     private PaisService paisService;
 
+    @Autowired
+    private PaisPropertyEditor paisPropertyEditor;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.addValidators(validador);
@@ -35,6 +39,8 @@ public class FormController {
         binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, false));
 
         binder.registerCustomEditor(String.class,"nombre",new NombreMayusculaEditor());
+
+        binder.registerCustomEditor(Pais.class,"pais", paisPropertyEditor);
     }
 
     @ModelAttribute("listaPaises")

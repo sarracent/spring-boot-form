@@ -1,6 +1,5 @@
 package com.sarracent.springboot.form.app.models.domain;
 
-import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Date;
 
@@ -36,7 +35,7 @@ public class Usuario {
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
 
-    @Valid
+    @NotNull
     private Pais pais;
 
     public Usuario() {
