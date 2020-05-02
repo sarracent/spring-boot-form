@@ -1,6 +1,7 @@
 package com.sarracent.springboot.form.app.controllers;
 
 import com.sarracent.springboot.form.app.editors.NombreMayusculaEditor;
+import com.sarracent.springboot.form.app.models.domain.Pais;
 import com.sarracent.springboot.form.app.models.domain.Usuario;
 import com.sarracent.springboot.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,17 @@ public class FormController {
         binder.registerCustomEditor(String.class,"nombre",new NombreMayusculaEditor());
     }
 
+    @ModelAttribute("listaPaises")
+    public List<Pais> listaPaises() {
+        return Arrays.asList(
+                new Pais(1,"CU","Cuba"),
+                new Pais(2,"CH","Suiza"),
+                new Pais(3,"AR","Argentina"),
+                new Pais(4,"NG","Nigeria"),
+                new Pais(5,"CO","Congo"),
+                new Pais(6,"BR","Brasil"));
+    }
+
     @ModelAttribute("paises")
     public List<String> paises() {
         return Arrays.asList("Cuba", "Suiza", "Argentina", "Nigeria", "Congo", "Brasil");
@@ -42,9 +54,9 @@ public class FormController {
     public Map<String, String> paisesMap() {
         Map<String, String> paises = new HashMap<String, String>();
         paises.put("CU", "Cuba");
-        paises.put("SU", "Suiza");
+        paises.put("CH", "Suiza");
         paises.put("AR", "Argentina");
-        paises.put("NI", "Nigeria");
+        paises.put("NG", "Nigeria");
         paises.put("CO", "Congo");
         paises.put("BR", "Brasil");
         return paises;
