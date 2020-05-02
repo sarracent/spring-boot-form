@@ -3,6 +3,7 @@ package com.sarracent.springboot.form.app.controllers;
 import com.sarracent.springboot.form.app.editors.NombreMayusculaEditor;
 import com.sarracent.springboot.form.app.models.domain.Pais;
 import com.sarracent.springboot.form.app.models.domain.Usuario;
+import com.sarracent.springboot.form.app.services.PaisService;
 import com.sarracent.springboot.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -20,9 +21,11 @@ import java.util.*;
 @Controller
 @SessionAttributes("usuario")
 public class FormController {
-
     @Autowired
     private UsuarioValidador validador;
+
+    @Autowired
+    private PaisService paisService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -36,13 +39,7 @@ public class FormController {
 
     @ModelAttribute("listaPaises")
     public List<Pais> listaPaises() {
-        return Arrays.asList(
-                new Pais(1,"CU","Cuba"),
-                new Pais(2,"CH","Suiza"),
-                new Pais(3,"AR","Argentina"),
-                new Pais(4,"NG","Nigeria"),
-                new Pais(5,"CO","Congo"),
-                new Pais(6,"BR","Brasil"));
+        return paisService.listar();
     }
 
     @ModelAttribute("paises")
