@@ -48,6 +48,11 @@ public class FormController {
         return paisService.listar();
     }
 
+    @ModelAttribute("listaRolesString")
+    public List<String> listaRolesString() {
+        return Arrays.asList("ROLE_ADMIN", "ROLE_USER", "ROLE_MODERATOR");
+    }
+
     @ModelAttribute("paises")
     public List<String> paises() {
         return Arrays.asList("Cuba", "Suiza", "Argentina", "Nigeria", "Congo", "Brasil");
