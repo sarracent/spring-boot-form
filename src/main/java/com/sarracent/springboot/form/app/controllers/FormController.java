@@ -3,8 +3,10 @@ package com.sarracent.springboot.form.app.controllers;
 import com.sarracent.springboot.form.app.editors.NombreMayusculaEditor;
 import com.sarracent.springboot.form.app.editors.PaisPropertyEditor;
 import com.sarracent.springboot.form.app.models.domain.Pais;
+import com.sarracent.springboot.form.app.models.domain.Role;
 import com.sarracent.springboot.form.app.models.domain.Usuario;
 import com.sarracent.springboot.form.app.services.PaisService;
+import com.sarracent.springboot.form.app.services.RoleService;
 import com.sarracent.springboot.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -29,6 +31,9 @@ public class FormController {
     private PaisService paisService;
 
     @Autowired
+    private RoleService roleService;
+
+    @Autowired
     private PaisPropertyEditor paisPropertyEditor;
 
     @InitBinder
@@ -46,6 +51,11 @@ public class FormController {
     @ModelAttribute("listaPaises")
     public List<Pais> listaPaises() {
         return paisService.listar();
+    }
+
+    @ModelAttribute("listaRoles")
+    public List<Role> listaRoles() {
+        return roleService.listar();
     }
 
     @ModelAttribute("listaRolesString")
