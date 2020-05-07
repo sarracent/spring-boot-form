@@ -47,6 +47,8 @@ public class Usuario {
     @NotEmpty
     private String genero;
 
+    private String valorScreto;
+
     public Usuario() {
     }
 
@@ -150,5 +152,13 @@ public class Usuario {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public String getValorScreto() {
+        return valorScreto;
+    }
+
+    public void setValorScreto(String valorScreto) {
+        this.valorScreto = valorScreto;
     }
 }
