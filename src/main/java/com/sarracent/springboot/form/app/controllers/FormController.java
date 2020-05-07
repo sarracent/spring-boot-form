@@ -107,6 +107,8 @@ public class FormController {
         usuario.setIdentificador("12.456.789-K");
         usuario.setHabilitar(true);
         usuario.setValorScreto("Algun valor secreto ****");
+        usuario.setPais(new Pais(1,"CU","Cuba"));
+        usuario.setRoles(Arrays.asList(new Role(2, "Usuario", "ROLE_USER")));
         model.addAttribute("titulo", "Formulario usuarios");
         model.addAttribute("usuario", usuario);
         return "form";
