@@ -8,9 +8,7 @@
 </head>
 <body>
 
-<div class="alerta alert-success">
-    <span th:text="'Tiempo transcurrido: ' + ${tiempoTrascurrido} + 'ms'"></span>
-</div>
+<section th:replace="componentes/tiempo :: interceptor"></section>
 
 <h3 th:text="${titulo}"></h3>
 <div class="container">
